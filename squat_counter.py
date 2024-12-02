@@ -46,9 +46,6 @@ class AngleCalc:
                 leftKneeAngle = math.degrees(math.atan2(y3 - y2, x3 - x2) - math.atan2(y1 - y2, x1 - x2))
                 rightKneeAngle = math.degrees(math.atan2(y6 - y5, x6 - x5) - math.atan2(y4 - y5, x4 - x5))
 
-                leftKneeAngle = int(np.interp(leftKneeAngle, [30, 180], [100, 0]))
-                rightKneeAngle = int(np.interp(rightKneeAngle, [30, 180], [100, 0]))
-
                 # drawing circles and lines on selected points
                 if self.drawPoints:
                     self.draw_point(x1, y1)
@@ -125,14 +122,15 @@ while True:
     #         counter += 0.5
     #         direction = 0
 
+    display_angle = int(np.interp(legs, [30, 180], [100, 0]))
 
     # putting scores on the screen
     cv2.putText(img, str(int(counter)), (1200, 80), cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 1.6, (0, 0, 0), 6)
 
     ## Converting values for rectangles
-    progress = np.interp(legs, [0, 100], [650, 450])
+    progress = np.interp(display_angle, [0, 100], [650, 450])
 
-    value_right = np.interp(legs, [0, 100], [0, 100])
+    value_right = np.interp(display_angle, [0, 100], [0, 100])
 
     # Drawing the empty bar (the outline)
     cv2.rectangle(img, (1125, 450), (1175, 650), black, 5)  # Green border for the bar
