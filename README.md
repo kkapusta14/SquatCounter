@@ -1,6 +1,4 @@
-# SquatCounter
-SquatCounter
-# README: AI-Powered Squat Counter with MediaPipe and OpenCV
+# README: AI Squat Counter 
 
 ## Overview
 
